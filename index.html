@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ЭКРАН 1: ПРИГЛАШЕНИЕ -->
+    <section id="screen-invite" class="screen active">
+        <div class="floating-flowers">
+            <span class="flower">🌸</span>
+            <span class="flower">🌷</span>
+            <span class="flower">💐</span>
+            <span class="flower">🌺</span>
+            <span class="flower">🌸</span>
+        </div>
+        <div class="invite-content">
+            <p class="invite-subtitle">Вас пригласили на свадьбу</p>
+            <h1 class="invite-title">Анна &amp; Дмитрий</h1>
+            <p class="invite-date">24 мая 2025</p>
+            <p class="invite-question">Вы согласны принять приглашение?</p>
+            <div class="invite-buttons">
+                <button id="btn-yes" class="btn-yes">Да, с радостью!</button>
+                <button id="btn-no" class="btn-no">Нет</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЭКРАН 2: ГЛАВНАЯ -->
+    <section id="screen-main" class="screen">
+        <div class="main-content">
+            <h2 class="fade-in">Дорогие гости!</h2>
+            <p class="fade-in delay-1">Мы будем счастливы разделить с вами самый важный день в нашей жизни</p>
+            
+            <div class="program fade-in delay-2">
+                <h3>Программа дня</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="time">12:00</span>
+                        <span class="event">Сбор гостей, фуршет</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="time">13:30</span>
+                        <span class="event">Церемония бракосочетания</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="time">14:30</span>
+                        <span class="event">Праздничный банкет</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="time">20:00</span>
+                        <span class="event">Танцы и веселье</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location fade-in delay-3">
+                <h3>Место проведения</h3>
+                <p>Ресторан «Ласточкино гнездо»</p>
+                <p>Москва, ул. Садовая, 15</p>
+                <a href="https://yandex.ru/maps/?text=Москва, ул. Садовая, 15" target="_blank" class="map-link">
+                    🗺️ Открыть в Яндекс.Картах
+                </a>
+            </div>
+
+            <div class="dresscode fade-in delay-4">
+                <h3>Дресс-код</h3>
+                <p>Пастельные тона, светлые оттенки</p>
+                <div class="colors">
+                    <span class="color" style="background: #f5e6e8"></span>
+                    <span class="color" style="background: #e8f0e3"></span>
+                    <span class="color" style="background: #fff5e6"></span>
+                    <span class="color" style="background: #e6e9f0"></span>
+                </div>
+            </div>
+
+            <div class="survey fade-in delay-5">
+                <h3>Опрос</h3>
+                <p>Что вы хотели бы видеть на свадьбе?</p>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="wish" value="Живая музыка"> Живая музыка</label>
+                    <label><input type="checkbox" name="wish" value="Фотозона"> Фотозона</label>
+                    <label><input type="checkbox" name="wish" value="Караоке"> Караоке</label>
+                    <label><input type="checkbox" name="wish" value="Фейерверк"> Фейерверк</label>
+                    <label><input type="checkbox" name="wish" value="Конкурсы"> Конкурсы</label>
+                    <label><input type="checkbox" name="wish" value="Танцевальный флешмоб"> Танцевальный флешмоб</label>
+                </div>
+                <input type="text" id="guest-name" placeholder="Ваше имя и фамилия" class="name-input">
+                <div class="attend-buttons">
+                    <button id="btn-attend-yes" class="btn-attend yes">Я приду!</button>
+                    <button id="btn-attend-no" class="btn-attend no">Не смогу прийти</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <p>Спасибо! Ваш ответ отправлен ❤️</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="secrets.js"></script>
+    <script src="script.js"></script>
+</body>
+                      </html>
