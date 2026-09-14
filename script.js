@@ -1,17 +1,10 @@
-/* =========================================================
-   ALICE & KIRILL — WEDDING INVITATION
-   ========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        EMAILJS
        ===================================================== */
 
-    if (
-        window.emailjs &&
-        window.EMAILJS_PUBLIC_KEY
-    ) {
+    if (window.emailjs && window.EMAILJS_PUBLIC_KEY) {
         emailjs.init({
             publicKey: window.EMAILJS_PUBLIC_KEY
         });
@@ -19,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       ЭКРАН ПРИГЛАШЕНИЯ
+       ЭКРАНЫ
        ===================================================== */
 
     const inviteScreen = document.getElementById("screen-invite");
@@ -28,89 +21,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnYes = document.getElementById("btn-yes");
     const btnNo = document.getElementById("btn-no");
 
-    let noClicks = 0;
-
-    const noTexts = [
-        "Нет",
-        "Точно нет?",
-        "Подумай ещё",
-        "А если подумать?",
-        "Последний шанс",
-        "Ну пожалуйста",
-        "Я расстроюсь…",
-        "Кнопка «Да» красивее!"
-    ];
-
 
     /* =====================================================
-       КНОПКА "НЕТ"
+       ПРОВЕРКА ЭЛЕМЕНТОВ
        ===================================================== */
 
-    if (btnNo && btnYes) {
+    console.log("Сайт загружен");
 
-        btnNo.addEventListener("click", () => {
-
-            noClicks++;
-
-            /*
-             * С каждым нажатием кнопка "Да"
-             * становится немного больше.
-             */
-
-            const scale = Math.min(
-                1 + noClicks * 0.18,
-                2.1
-            );
-
-            btnYes.style.transform = `scale(${scale})`;
-
-
-            /*
-             * Меняем текст кнопки "Нет"
-             */
-
-            if (noClicks < noTexts.length) {
-                btnNo.textContent = noTexts[noClicks];
-            }
-
-
-            /*
-             * После нескольких попыток
-             * кнопка "Нет" исчезает.
-             */
-
-            if (noClicks >= 6) {
-
-                btnNo.style.display = "none";
-
-                btnYes.textContent = "Ну конечно да! ♥";
-
-                btnYes.style.transform = "scale(1.18)";
-
-                return;
-            }
-
-
-            /*
-             * После третьего клика
-             * кнопка начинает убегать.
-             */
-
-            if (noClicks >= 3) {
-
-                const x =
-                    (Math.random() - 0.5) * 160;
-
-                const y =
-                    (Math.random() - 0.5) * 80;
-
-                btnNo.style.transform =
-                    `translate(${x}px, ${y}px)`;
-            }
-
-        });
-
-    }
+    console.log("Кнопка Да:", btnYes);
+    console.log("Кнопка Нет:", btnNo);
+    console.log("Экран приглашения:", inviteScreen);
+    console.log("Главный экран:", mainScreen);
 
 
     /* =====================================================
@@ -119,134 +40,138 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btnYes) {
 
-        btnYes.addEventListener("click", () => {
+        btnYes.addEventListener("click", function () {
+
+            console.log("Нажата кнопка ДА");
 
             /*
-             * Убираем экран приглашения
+             * Убираем первый экран
              */
-
             if (inviteScreen) {
                 inviteScreen.classList.remove("active");
             }
 
-
             /*
-             * Показываем основной сайт
+             * Показываем основной экран
              */
-
             if (mainScreen) {
-                mainScreen.classList.add("visible");
+                mainScreen.classList.add("active");
             }
-
 
             /*
              * Возвращаем страницу наверх
              */
-
             window.scrollTo({
                 top: 0,
                 behavior: "instant"
             });
 
-
             document.body.classList.add("site-open");
 
-
-            /*
-             * Запускаем первые анимации
-             */
-
-            setTimeout(() => {
-
-                document
-                    .querySelectorAll(".main-screen .reveal")
-                    .forEach(element => {
-
-                        const rect =
-                            element.getBoundingClientRect();
-
-                        if (
-                            rect.top <
-                            window.innerHeight * 0.92
-                        ) {
-                            element.classList.add("is-visible");
-                        }
-
-                    });
-
-            }, 100);
-
         });
 
     }
 
 
     /* =====================================================
-       АНИМАЦИИ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ
+       КНОПКА "НЕТ"
        ===================================================== */
 
-    const revealItems =
-        document.querySelectorAll(".reveal");
+    let noClicks = 0;
+
+    const noTexts = [
+        "Нет",
+        "Точно нет?",
+        "Подумай ещё!",
+        "А если подумать?",
+        "Последний шанс!",
+        "Ну пожалуйста!",
+        "Я расстроюсь...",
+        "Кнопка «Да» красивее!"
+    ];
 
 
-    if ("IntersectionObserver" in window) {
+    if (btnNo && btnYes) {
 
-        const observer =
-            new IntersectionObserver(
+        btnNo.addEventListener("click", function (event) {
 
-                (entries) => {
+            /*
+             * Чтобы клик точно не всплывал
+             */
+            event.preventDefault();
+            event.stopPropagation();
 
-                    entries.forEach(entry => {
+            noClicks++;
 
-                        if (entry.isIntersecting) {
+            console.log("Нажата кнопка НЕТ:", noClicks);
 
-                            entry.target.classList.add(
-                                "is-visible"
-                            );
 
-                            /*
-                             * Больше этот элемент
-                             * наблюдать не нужно.
-                             */
+            /* ---------------------------------------------
+               Увеличиваем кнопку ДА
+               --------------------------------------------- */
 
-                            observer.unobserve(
-                                entry.target
-                            );
-                        }
-
-                    });
-
-                },
-
-                {
-                    threshold: 0.12,
-
-                    rootMargin:
-                        "0px 0px -40px 0px"
-                }
-
+            const scale = Math.min(
+                1 + noClicks * 0.15,
+                1.8
             );
 
+            btnYes.style.transform =
+                "scale(" + scale + ")";
 
-        revealItems.forEach(item => {
-            observer.observe(item);
-        });
 
-    } else {
+            /* ---------------------------------------------
+               Меняем текст кнопки НЕТ
+               --------------------------------------------- */
 
-        /*
-         * Запасной вариант для старых браузеров
-         */
+            if (noClicks < noTexts.length) {
 
-        revealItems.forEach(item => {
-            item.classList.add("is-visible");
+                btnNo.textContent =
+                    noTexts[noClicks];
+
+            }
+
+
+            /* ---------------------------------------------
+               После 6 попыток убираем НЕТ
+               --------------------------------------------- */
+
+            if (noClicks >= 6) {
+
+                btnNo.style.display = "none";
+
+                btnYes.textContent =
+                    "Ну конечно да! ♥";
+
+                btnYes.style.transform =
+                    "scale(1.2)";
+
+                return;
+            }
+
+
+            /* ---------------------------------------------
+               Кнопка начинает убегать
+               --------------------------------------------- */
+
+            if (noClicks >= 3) {
+
+                const x =
+                    (Math.random() - 0.5) * 180;
+
+                const y =
+                    (Math.random() - 0.5) * 100;
+
+                btnNo.style.transform =
+                    "translate(" + x + "px, " + y + "px)";
+            }
+
         });
 
     }
 
 
     /* =====================================================
-       RSVP
+       ОПРОС — КНОПКИ
        ===================================================== */
 
     const attendYes =
@@ -255,15 +180,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const attendNo =
         document.getElementById("btn-attend-no");
 
-    const guestName =
-        document.getElementById("guest-name");
-
 
     if (attendYes) {
 
         attendYes.addEventListener(
             "click",
-            () => sendResponse(true)
+            function () {
+                sendResponse(true);
+            }
         );
 
     }
@@ -273,7 +197,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         attendNo.addEventListener(
             "click",
-            () => sendResponse(false)
+            function () {
+                sendResponse(false);
+            }
         );
 
     }
@@ -283,103 +209,83 @@ document.addEventListener("DOMContentLoaded", () => {
        ОТПРАВКА ОТВЕТА
        ===================================================== */
 
-    async function sendResponse(willAttend) {
+    function sendResponse(willAttend) {
 
-        /*
-         * Получаем имя
-         */
+        const nameInput =
+            document.getElementById("guest-name");
 
         const name =
-            guestName
-                ? guestName.value.trim()
+            nameInput
+                ? nameInput.value.trim()
                 : "";
 
 
-        /*
-         * Проверяем имя
-         */
+        /* ---------------------------------------------
+           Проверяем имя
+           --------------------------------------------- */
 
         if (!name) {
 
-            if (guestName) {
+            alert(
+                "Пожалуйста, введите ваше имя и фамилию."
+            );
 
-                guestName.focus();
-
-                guestName.classList.add(
-                    "input-error"
-                );
-
-
-                setTimeout(() => {
-
-                    guestName.classList.remove(
-                        "input-error"
-                    );
-
-                }, 900);
-
+            if (nameInput) {
+                nameInput.focus();
             }
 
             return;
         }
 
 
-        /* =================================================
-           ПОЛУЧАЕМ ВЫБРАННЫЕ НАПИТКИ
-           ================================================= */
+        /* ---------------------------------------------
+           Получаем напитки
+           --------------------------------------------- */
 
-        const alcohol =
+        const selectedAlcohol =
             Array.from(
-
                 document.querySelectorAll(
                     'input[name="alcohol"]:checked'
                 )
-
-            ).map(
-                checkbox => checkbox.value
-            );
-
-
-        /*
-         * Если человек выбрал несколько,
-         * они отправятся одной строкой.
-         *
-         * Например:
-         *
-         * Вино белое, Безалкогольные напитки
-         */
-
-        const alcoholText =
-            alcohol.length > 0
-                ? alcohol.join(", ")
-                : "Ничего не выбрал";
+            ).map(function (checkbox) {
+                return checkbox.value;
+            });
 
 
-        /* =================================================
-           ДАННЫЕ ДЛЯ EMAILJS
-           ================================================= */
+        const alcohol =
+            selectedAlcohol.length > 0
+                ? selectedAlcohol.join(", ")
+                : "Ничего не выбрано";
+
+
+        /* ---------------------------------------------
+           Формируем данные
+           --------------------------------------------- */
 
         const templateParams = {
 
             guest_name: name,
 
             attendance: willAttend
-                ? "✅ Согласен прийти!"
-                : "❌ К сожалению, не сможет прийти",
+                ? "✅ Я приду!"
+                : "❌ К сожалению, не смогу прийти",
 
-            alcohol: alcoholText,
+            alcohol: alcohol,
 
-            date:
-                new Date().toLocaleString(
-                    "ru-RU"
-                )
+            date: new Date().toLocaleString("ru-RU")
 
         };
 
 
-        /* =================================================
-           ПРОВЕРКА EMAILJS
-           ================================================= */
+        console.log(
+            "Данные для отправки:",
+            templateParams
+        );
+
+
+        /* ---------------------------------------------
+           Если EmailJS не настроен
+           --------------------------------------------- */
 
         if (
             !window.emailjs ||
@@ -388,16 +294,10 @@ document.addEventListener("DOMContentLoaded", () => {
             !window.EMAILJS_PUBLIC_KEY
         ) {
 
-            /*
-             * Если EmailJS ещё не настроен,
-             * сайт не ломается.
-             */
-
             console.warn(
-                "EmailJS не настроен.",
+                "EmailJS не настроен. Данные:",
                 templateParams
             );
-
 
             showModal();
 
@@ -405,44 +305,38 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* =================================================
-           ОТПРАВКА EMAIL
-           ================================================= */
+        /* ---------------------------------------------
+           Отправляем
+           --------------------------------------------- */
 
-        try {
+        emailjs.send(
+            window.EMAILJS_SERVICE_ID,
+            window.EMAILJS_TEMPLATE_ID,
+            templateParams
+        )
+        .then(function (response) {
 
-            await emailjs.send(
-
-                window.EMAILJS_SERVICE_ID,
-
-                window.EMAILJS_TEMPLATE_ID,
-
-                templateParams
-
+            console.log(
+                "Ответ успешно отправлен:",
+                response
             );
-
-
-            /*
-             * Успешная отправка
-             */
 
             showModal();
 
-
-        } catch (error) {
+        })
+        .catch(function (error) {
 
             console.error(
-                "EmailJS error:",
+                "Ошибка EmailJS:",
                 error
             );
-
 
             alert(
                 "Не удалось отправить ответ. " +
                 "Попробуйте ещё раз."
             );
 
-        }
+        });
 
     }
 
@@ -451,23 +345,118 @@ document.addEventListener("DOMContentLoaded", () => {
        МОДАЛЬНОЕ ОКНО
        ===================================================== */
 
-    const modal =
-        document.getElementById(
-            "success-modal"
-        );
-
-
-    const modalClose =
-        document.querySelector(
-            ".modal-close"
-        );
-
-
     function showModal() {
 
-        if (!modal) return;
+        const modal =
+            document.getElementById(
+                "success-modal"
+            );
+
+        if (!modal) {
+            return;
+        }
+
+        modal.classList.add("active");
 
 
-        modal.classList.add(
-            "active"
-       
+        setTimeout(function () {
+
+            modal.classList.remove("active");
+
+        }, 3000);
+
+    }
+
+
+    /* =====================================================
+       ESC — ЗАКРЫТЬ МОДАЛКУ
+       ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key !== "Escape") {
+                return;
+            }
+
+            const modal =
+                document.getElementById(
+                    "success-modal"
+                );
+
+            if (modal) {
+                modal.classList.remove("active");
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       АНИМАЦИИ ПРИ СКРОЛЛЕ
+       ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    if (
+        revealElements.length > 0 &&
+        "IntersectionObserver" in window
+    ) {
+
+        const observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "is-visible"
+                                );
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.1
+                }
+            );
+
+
+        revealElements.forEach(
+            function (element) {
+
+                observer.observe(element);
+
+            }
+        );
+
+    } else {
+
+        revealElements.forEach(
+            function (element) {
+
+                element.classList.add(
+                    "is-visible"
+                );
+
+            }
+        );
+
+    }
+
+});
