@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение на свадьбу</title>
+    <title>Алиса & Кирилл — 24 мая 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -12,12 +12,10 @@
 
     <!-- ЭКРАН 1: ПРИГЛАШЕНИЕ -->
     <section id="screen-invite" class="screen active">
-        <div class="floating-flowers">
-            <span class="flower">🌸</span>
-            <span class="flower">🌷</span>
-            <span class="flower">💐</span>
-            <span class="flower">🌺</span>
-            <span class="flower">🌸</span>
+        <div class="bg-decoration">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
         </div>
         <div class="invite-content">
             <p class="invite-subtitle">Вас пригласили на свадьбу</p>
@@ -54,7 +52,7 @@
                     </div>
                     <div class="timeline-item">
                         <span class="time">20:00</span>
-                        <span class="event">Танцы и веселье</span>
+                        <span class="event">Танцы и веселье до утра</span>
                     </div>
                 </div>
             </div>
@@ -64,31 +62,42 @@
                 <p>Ресторан «Ласточкино гнездо»</p>
                 <p>Москва, ул. Садовая, 15</p>
                 <a href="https://yandex.ru/maps/?text=Москва, ул. Садовая, 15" target="_blank" class="map-link">
-                    🗺️ Открыть в Яндекс.Картах
+                    🗺️ Построить маршрут
                 </a>
             </div>
 
             <div class="dresscode fade-in delay-4">
                 <h3>Дресс-код</h3>
-                <p>Пастельные тона, светлые оттенки</p>
-                <div class="colors">
-                    <span class="color" style="background: #f5e6e8"></span>
-                    <span class="color" style="background: #e8f0e3"></span>
-                    <span class="color" style="background: #fff5e6"></span>
-                    <span class="color" style="background: #e6e9f0"></span>
-                </div>
+                <p class="dresscode-text">Полный шик! ✨</p>
+                <p>Приходите в самом лучшем, самом ярком, самом блестящем — во всём, что заставит вас сиять. Мы хотим видеть вас нарядными и счастливыми!</p>
+                <p class="dresscode-hint">Блёстки, смокинги, вечерние платья, костюмы — всё, что хотите. Главное — праздничное настроение!</p>
             </div>
 
-            <div class="survey fade-in delay-5">
+            <div class="gifts fade-in delay-5">
+                <h3>Что дарить?</h3>
+                <p class="gifts-text">Ваше присутствие — уже лучший подарок для нас! 🎁</p>
+                <p>Но если вы всё же хотите нас порадовать, мы не откажемся от:</p>
+                <ul class="gifts-list">
+                    <li>💰 Денег (мы их очень любим)</li>
+                    <li>🚗 Машин (желательно с документами)</li>
+                    <li>🏠 Недвижимости (в идеале — с видом на море)</li>
+                </ul>
+                <p class="gifts-joke">А если серьёзно — будем благодарны за вклад в наш семейный бюджет. Но главное — приходите!</p>
+            </div>
+
+            <div class="survey fade-in delay-6">
                 <h3>Опрос</h3>
-                <p>Что вы хотели бы видеть на свадьбе?</p>
+                <p>Что будем пить? 🍷</p>
+                <p class="survey-sub">Чтобы мы знали, чем вас угощать, и не спрашивали у каждого лично</p>
                 <div class="checkbox-group">
-                    <label><input type="checkbox" name="wish" value="Живая музыка"> Живая музыка</label>
-                    <label><input type="checkbox" name="wish" value="Фотозона"> Фотозона</label>
-                    <label><input type="checkbox" name="wish" value="Караоке"> Караоке</label>
-                    <label><input type="checkbox" name="wish" value="Фейерверк"> Фейерверк</label>
-                    <label><input type="checkbox" name="wish" value="Конкурсы"> Конкурсы</label>
-                    <label><input type="checkbox" name="wish" value="Танцевальный флешмоб"> Танцевальный флешмоб</label>
+                    <label><input type="checkbox" name="alcohol" value="Шампанское"> Шампанское</label>
+                    <label><input type="checkbox" name="alcohol" value="Вино белое сухое"> Вино белое сухое</label>
+                    <label><input type="checkbox" name="alcohol" value="Вино белое полусладкое"> Вино белое полусладкое</label>
+                    <label><input type="checkbox" name="alcohol" value="Вино красное сухое"> Вино красное сухое</label>
+                    <label><input type="checkbox" name="alcohol" value="Вино красное полусладкое"> Вино красное полусладкое</label>
+                    <label><input type="checkbox" name="alcohol" value="Крепкий алкоголь (виски, коньяк)"> Крепкий алкоголь</label>
+                    <label><input type="checkbox" name="alcohol" value="Коктейли"> Коктейли</label>
+                    <label><input type="checkbox" name="alcohol" value="Безалкогольные напитки"> Безалкогольные</label>
                 </div>
                 <input type="text" id="guest-name" placeholder="Ваше имя и фамилия" class="name-input">
                 <div class="attend-buttons">
@@ -109,4 +118,4 @@
     <script src="secrets.js"></script>
     <script src="script.js"></script>
 </body>
-                      </html>
+</html>
