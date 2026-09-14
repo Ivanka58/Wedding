@@ -3,119 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#74765b">
+    <meta name="description" content="Свадебное приглашение Алисы и Кирилла — 24 мая 2026">
     <title>Алиса & Кирилл — 24 мая 2026</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ЭКРАН 1: ПРИГЛАШЕНИЕ -->
-    <section id="screen-invite" class="screen active">
-        <div class="bg-decoration">
-            <div class="circle circle-1"></div>
-            <div class="circle circle-2"></div>
-            <div class="circle circle-3"></div>
+    <!-- =========================================================
+         ЭКРАН-ПРИГЛАШЕНИЕ
+         Чтобы поставить свою фотографию, положите файл wedding-photo.jpg
+         рядом с index.html. Если файла нет — останется красивый фон.
+         ========================================================= -->
+    <section id="screen-invite" class="screen invite-screen active">
+        <div class="invite-noise"></div>
+        <div class="invite-botanical botanical-left" aria-hidden="true"></div>
+        <div class="invite-botanical botanical-right" aria-hidden="true"></div>
+
+        <div class="invite-top">
+            <span>WEDDING INVITATION</span>
+            <span>24 / 05 / 2026</span>
         </div>
-        <div class="invite-content">
-            <p class="invite-subtitle">Вас пригласили на свадьбу</p>
-            <h1 class="invite-title">Алиса &amp; Кирилл</h1>
-            <p class="invite-date">24 мая 2026</p>
-            <p class="invite-question">Вы согласны принять приглашение?</p>
-            <div class="invite-buttons">
-                <button id="btn-yes" class="btn-yes">Да, с радостью!</button>
-                <button id="btn-no" class="btn-no">Нет</button>
+
+        <div class="invite-layout">
+            <div class="invite-copy">
+                <p class="eyebrow">Мы начинаем новую главу</p>
+                <h1>Алиса <i>&</i> Кирилл</h1>
+
+                <div class="invite-divider">
+                    <span></span>
+                    <b>24</b>
+                    <span></span>
+                </div>
+
+                <p class="invite-date">МАЯ · 2026</p>
+                <p class="invite-question">Будете с нами в этот день?</p>
+
+                <div class="invite-buttons">
+                    <button id="btn-yes" class="button button-dark">Да, с радостью <span>↗</span></button>
+                    <button id="btn-no" class="button button-ghost">Нет</button>
+                </div>
             </div>
+
+            <div class="invite-photo-wrap">
+                <div class="photo-frame">
+                    <div class="photo-placeholder">
+                        <span class="photo-kicker">THE BEGINNING</span>
+                        <strong>A</strong>
+                        <em>&</em>
+                        <strong>К</strong>
+                        <small>24 — 05 — 26</small>
+                    </div>
+                </div>
+                <div class="photo-caption">two hearts · one story</div>
+            </div>
+        </div>
+
+        <div class="invite-bottom">
+            <span>SCROLL TO DISCOVER</span>
+            <span class="scroll-line"></span>
         </div>
     </section>
 
-    <!-- ЭКРАН 2: ГЛАВНАЯ -->
-    <section id="screen-main" class="screen">
-        <div class="main-content">
-            <h2 class="fade-in">Дорогие гости!</h2>
-            <p class="fade-in delay-1">Мы будем счастливы разделить с вами самый важный день в нашей жизни</p>
-            
-            <div class="program fade-in delay-2">
-                <h3>Программа дня</h3>
+    <!-- =========================================================
+         ОСНОВНОЙ САЙТ
+         ========================================================= -->
+    <section id="screen-main" class="screen main-screen">
+        <header class="site-header">
+            <a href="#screen-main" class="monogram">A<span>&</span>К</a>
+
+            <nav class="site-nav" aria-label="Навигация">
+                <a href="#program">Программа</a>
+                <a href="#location">Место</a>
+                <a href="#dresscode">Дресс-код</a>
+                <a href="#rsvp">Ответить</a>
+            </nav>
+
+            <span class="header-date">24.05.26</span>
+        </header>
+
+        <main>
+            <!-- HERO -->
+            <section class="main-hero section">
+                <div class="hero-side-note">A DAY TO REMEMBER</div>
+
+                <div class="hero-content reveal">
+                    <p class="eyebrow">Дорогие гости</p>
+                    <h2>Самое красивое<br><i>начало</i></h2>
+                    <p class="hero-lead">
+                        Мы будем счастливы разделить с вами день,
+                        с которого начинается наша общая история.
+                    </p>
+
+                    <div class="date-lockup">
+                        <span>24</span>
+                        <div>
+                            <b>МАЯ</b>
+                            <small>ДВЕ ТЫСЯЧИ ДВАДЦАТЬ ШЕСТОГО</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-art" aria-hidden="true">
+                    <div class="hero-oval"></div>
+                    <div class="hero-flower flower-1"></div>
+                    <div class="hero-flower flower-2"></div>
+                </div>
+
+                <div class="hero-scroll">↓</div>
+            </section>
+
+            <!-- INTRO -->
+            <section class="intro section">
+                <div class="section-label reveal">01 / ABOUT THE DAY</div>
+                <div class="intro-grid">
+                    <h3 class="display-title reveal">Один день.<br><i>Целая жизнь.</i></h3>
+                    <div class="intro-text reveal">
+                        <p>
+                            Есть дни, которые хочется запомнить до мелочей.
+                            Наш — именно такой.
+                        </p>
+                        <p>
+                            Приходите нарядными, красивыми и готовыми
+                            много смеяться, танцевать и праздновать вместе с нами.
+                        </p>
+                        <span class="signature">Алиса & Кирилл</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROGRAM -->
+            <section id="program" class="olive-section section">
+                <div class="section-label light reveal">02 / THE DAY</div>
+                <div class="section-heading reveal">
+                    <p class="eyebrow light">Запоминайте время</p>
+                    <h3>Программа <i>дня</i></h3>
+                </div>
+
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <span class="time">12:00</span>
-                        <span class="event">Сбор гостей, фуршет</span>
+                    <article class="timeline-item reveal">
+                        <span class="timeline-number">01</span>
+                        <time>12:00</time>
+                        <div>
+                            <h4>Сбор гостей</h4>
+                            <p>Встречаемся, знакомимся и начинаем праздник с бокала игристого.</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-number">02</span>
+                        <time>13:30</time>
+                        <div>
+                            <h4>Церемония</h4>
+                            <p>Тот самый момент, ради которого мы здесь собрались.</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-number">03</span>
+                        <time>14:30</time>
+                        <div>
+                            <h4>Праздничный банкет</h4>
+                            <p>Вкусный ужин, тосты, музыка и много поводов поднять бокалы.</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item reveal">
+                        <span class="timeline-number">04</span>
+                        <time>20:00</time>
+                        <div>
+                            <h4>Танцы & веселье</h4>
+                            <p>Переходим к главной части вечера. Танцуем до последней песни.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- LOCATION -->
+            <section id="location" class="location-section section">
+                <div class="location-card reveal">
+                    <div class="location-info">
+                        <div class="section-label">03 / WHERE</div>
+                        <p class="eyebrow">Место проведения</p>
+                        <h3>Ресторан<br><i>«Ласточкино гнездо»</i></h3>
+                        <p class="address">Москва, ул. Садовая, 15</p>
+
+                        <a
+                            href="https://yandex.ru/maps/?text=Москва%2C%20ул.%20Садовая%2C%2015"
+                            target="_blank"
+                            rel="noopener"
+                            class="outline-link"
+                        >
+                            Открыть карту <span>↗</span>
+                        </a>
                     </div>
-                    <div class="timeline-item">
-                        <span class="time">13:30</span>
-                        <span class="event">Церемония бракосочетания</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="time">14:30</span>
-                        <span class="event">Праздничный банкет</span>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="time">20:00</span>
-                        <span class="event">Танцы и веселье до утра</span>
+
+                    <div class="location-visual" aria-label="Схематичная карта">
+                        <div class="map-grid"></div>
+                        <div class="map-road road-1"></div>
+                        <div class="map-road road-2"></div>
+                        <div class="map-pin"><span>♥</span></div>
+                        <div class="map-label">HERE<br>WE MEET</div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="location fade-in delay-3">
-                <h3>Место проведения</h3>
-                <p>Ресторан «Ласточкино гнездо»</p>
-                <p>Москва, ул. Садовая, 15</p>
-                <a href="https://yandex.ru/maps/?text=Москва, ул. Садовая, 15" target="_blank" class="map-link">
-                    🗺️ Построить маршрут
-                </a>
-            </div>
-
-            <div class="dresscode fade-in delay-4">
-                <h3>Дресс-код</h3>
-                <p class="dresscode-text">Полный шик! ✨</p>
-                <p>Приходите в самом лучшем, самом ярком, самом блестящем — во всём, что заставит вас сиять. Мы хотим видеть вас нарядными и счастливыми!</p>
-                <p class="dresscode-hint">Блёстки, смокинги, вечерние платья, костюмы — всё, что хотите. Главное — праздничное настроение!</p>
-            </div>
-
-            <div class="gifts fade-in delay-5">
-                <h3>Что дарить?</h3>
-                <p class="gifts-text">Ваше присутствие — уже лучший подарок для нас! 🎁</p>
-                <p>Но если вы всё же хотите нас порадовать, мы не откажемся от:</p>
-                <ul class="gifts-list">
-                    <li>💰 Денег (мы их очень любим)</li>
-                    <li>🚗 Машин (желательно с документами)</li>
-                    <li>🏠 Недвижимости (в идеале — с видом на море)</li>
-                </ul>
-                <p class="gifts-joke">А если серьёзно — будем благодарны за вклад в наш семейный бюджет. Но главное — приходите!</p>
-            </div>
-
-            <div class="survey fade-in delay-6">
-                <h3>Опрос</h3>
-                <p>Что будем пить? 🍷</p>
-                <p class="survey-sub">Чтобы мы знали, чем вас угощать, и не спрашивали у каждого лично</p>
-                <div class="checkbox-group">
-                    <label><input type="checkbox" name="alcohol" value="Шампанское"> Шампанское</label>
-                    <label><input type="checkbox" name="alcohol" value="Вино белое сухое"> Вино белое сухое</label>
-                    <label><input type="checkbox" name="alcohol" value="Вино белое полусладкое"> Вино белое полусладкое</label>
-                    <label><input type="checkbox" name="alcohol" value="Вино красное сухое"> Вино красное сухое</label>
-                    <label><input type="checkbox" name="alcohol" value="Вино красное полусладкое"> Вино красное полусладкое</label>
-                    <label><input type="checkbox" name="alcohol" value="Крепкий алкоголь (виски, коньяк)"> Крепкий алкоголь</label>
-                    <label><input type="checkbox" name="alcohol" value="Коктейли"> Коктейли</label>
-                    <label><input type="checkbox" name="alcohol" value="Безалкогольные напитки"> Безалкогольные</label>
+            <!-- DRESSCODE -->
+            <section id="dresscode" class="dress-section section">
+                <div class="dress-art" aria-hidden="true">
+                    <span>dress</span>
+                    <span>to</span>
+                    <span>shine</span>
                 </div>
-                <input type="text" id="guest-name" placeholder="Ваше имя и фамилия" class="name-input">
-                <div class="attend-buttons">
-                    <button id="btn-attend-yes" class="btn-attend yes">Я приду!</button>
-                    <button id="btn-attend-no" class="btn-attend no">Не смогу прийти</button>
+
+                <div class="dress-content reveal">
+                    <div class="section-label">04 / DRESS CODE</div>
+                    <p class="eyebrow">Нам будет очень приятно</p>
+                    <h3>Полный<br><i>шик.</i></h3>
+                    <p class="dress-lead">
+                        Приходите в самом лучшем, самом ярком,
+                        самом блестящем — во всём, что заставит вас сиять.
+                    </p>
+
+                    <div class="dress-tags">
+                        <span>вечерние платья</span>
+                        <span>смокинги</span>
+                        <span>костюмы</span>
+                        <span>блёстки</span>
+                    </div>
+
+                    <p class="small-note">
+                        Главное — праздничное настроение. ✦
+                    </p>
                 </div>
-            </div>
-        </div>
+            </section>
+
+            <!-- GIFTS -->
+            <section class="gifts-section section">
+                <div class="section-label reveal">05 / GIFTS</div>
+                <div class="gifts-grid">
+                    <div class="gifts-heading reveal">
+                        <p class="eyebrow">Если спрашиваете нас</p>
+                        <h3>Что <i>дарить?</i></h3>
+                    </div>
+
+                    <div class="gifts-copy reveal">
+                        <p class="gifts-main">
+                            Ваше присутствие — уже лучший подарок для нас. ♥
+                        </p>
+                        <p>Но если очень хочется нас порадовать, мы не откажемся от:</p>
+
+                        <ul>
+                            <li><span>01</span> Денег — мы их очень любим</li>
+                            <li><span>02</span> Машин — желательно с документами</li>
+                            <li><span>03</span> Недвижимости — в идеале с видом на море</li>
+                        </ul>
+
+                        <p class="small-note">
+                            А если серьёзно — будем благодарны за вклад в наш семейный бюджет.
+                            Но главное — приходите!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSVP -->
+            <section id="rsvp" class="rsvp-section section">
+                <div class="rsvp-card reveal">
+                    <div class="rsvp-header">
+                        <div>
+                            <div class="section-label">06 / RSVP</div>
+                            <p class="eyebrow">Дайте нам знать</p>
+                            <h3>Вы <i>будете?</i></h3>
+                        </div>
+                        <div class="rsvp-mark">♥</div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="guest-name">Ваше имя и фамилия</label>
+                        <input type="text" id="guest-name" placeholder="Например, Анна Иванова" autocomplete="name">
+                    </div>
+
+                    <div class="form-field">
+                        <label>Что будем пить?</label>
+                        <p class="field-note">Можно выбрать несколько вариантов — нам важно понять категории и количество.</p>
+
+                        <div class="drink-grid">
+                            <label class="drink-option">
+                                <input type="checkbox" name="alcohol" value="Шампанское">
+                                <span><b>Шампанское</b><small>Игристое</small></span>
+                            </label>
+
+                            <label class="drink-option">
+                                <input type="checkbox" name="alcohol" value="Вино красное">
+                                <span><b>Вино красное</b><small>Красное вино</small></span>
+                            </label>
+
+                            <label class="drink-option">
+                                <input type="checkbox" name="alcohol" value="Вино белое">
+                                <span><b>Вино белое</b><small>Белое вино</small></span>
+                            </label>
+
+                            <label class="drink-option">
+                                <input type="checkbox" name="alcohol" value="Крепкие напитки">
+                                <span><b>Крепкие напитки</b><small>Виски · коньяк и т.п.</small></span>
+                            </label>
+
+                            <label class="drink-option">
+                                <input type="checkbox" name="alcohol" value="Безалкогольные напитки">
+                                <span><b>Безалкогольное</b><small>Без алкоголя</small></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="attendance">
+                        <p>И самое главное:</p>
+                        <div class="attendance-buttons">
+                            <button id="btn-attend-yes" class="button button-dark large">Я приду! ♥</button>
+                            <button id="btn-attend-no" class="button button-light large">Не смогу прийти</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-monogram">A <i>&</i> К</div>
+            <p>До встречи 24 мая</p>
+            <span>WITH LOVE · 2026</span>
+        </footer>
     </section>
 
-    <div id="success-modal" class="modal">
+    <!-- MODAL -->
+    <div id="success-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
-            <p>Спасибо! Ваш ответ отправлен ❤️</p>
+            <button class="modal-close" type="button" aria-label="Закрыть">×</button>
+            <span class="modal-heart">♥</span>
+            <p class="eyebrow">Спасибо</p>
+            <h3 id="modal-title">Ваш ответ<br><i>получен.</i></h3>
+            <p>До встречи на нашем празднике!</p>
         </div>
     </div>
 
+    <!-- Оставьте ваш существующий secrets.js без изменений. -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="secrets.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
