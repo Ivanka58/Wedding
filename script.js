@@ -1,4 +1,4 @@
-// Инициализация EmailJS (ключи из secrets.js)
+// Инициализация EmailJS
 emailjs.init(window.EMAILJS_PUBLIC_KEY);
 
 // ЭКРАН 1: Побегающая кнопка "Нет"
@@ -38,7 +38,7 @@ btnNo.addEventListener('click', () => {
         btnYes.textContent = "Ну конечно да! ❤️";
     }
     
-    // Убегающий эффект (случайное положение)
+    // Убегающий эффект
     if (noClicks > 2 && noClicks < 6) {
         const x = (Math.random() - 0.5) * 200;
         const y = (Math.random() - 0.5) * 100;
@@ -62,17 +62,16 @@ function sendResponse(willAttend) {
         return;
     }
     
-    const wishes = Array.from(document.querySelectorAll('input[name="wish"]:checked'))
+    const alcohol = Array.from(document.querySelectorAll('input[name="alcohol"]:checked'))
         .map(cb => cb.value);
     
     const templateParams = {
         guest_name: name,
         attendance: willAttend ? "✅ Согласен прийти!" : "❌ К сожалению, не сможет прийти",
-        wishes: wishes.length > 0 ? wishes.join(", ") : "Ничего не выбрал",
+        alcohol: alcohol.length > 0 ? alcohol.join(", ") : "Ничего не выбрал",
         date: new Date().toLocaleString('ru-RU')
     };
     
-    // Отправка через EmailJS
     emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, templateParams)
         .then(() => {
             showModal();
@@ -89,4 +88,4 @@ function showModal() {
     setTimeout(() => {
         modal.classList.remove('active');
     }, 3000);
-          }
+}
